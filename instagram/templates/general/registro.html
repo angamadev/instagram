@@ -1,0 +1,25 @@
+{% extends "general/layout.html" %}
+
+{% load i18n %}
+
+{% load crispy_forms_tags %}
+
+{% block head_title %}{% trans "Registro" %}{% endblock %}
+{% block h1_title %}{% trans "Registro de Usuario" %}{% endblock %} 
+{% block page_content %}
+  {% load static %}
+
+  {% if form %}
+    {% if error_message %}
+    <p style="color: red;"> {{ error_message }} </p>
+    {% endif %}
+    <form action="" method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+        <button class="btn btn-success"> {% trans "Enviar" %} </button>
+    </form>
+  {% else %}
+    <p style="color: red;"> {{ msg }} </p>
+  {% endif %}
+{% endblock %}
+

@@ -1,0 +1,33 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+
+<ul>
+    <li><a href={% url 'home' %}>{% trans "Inicio" %} </a>
+    <li><a href={% url 'contacto' %}>{% trans "Contacto"%}</a>
+
+    {% if request.user.is_authenticated %}
+        <li type="submit"><a href={% url "logout" %}>{% trans "Cerrar Sesion" %}</a></li>
+        <form method="POST" action="{% url 'logout' %}">
+            {% csrf_token %}
+        </ul>
+            <p> <strong>{% trans "Bienvenido " %}{{ request.user }} </strong></p>
+        </form>
+    {% else %}
+            <li><a href={% url "registro" %}>{% trans "Registro" %}</a></li>
+            <li><a href={% url "login" %}>{% trans "Login" %}</a></li>
+    
+        </ul>
+    {% endif %}
+
+{% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+            <li class="{% if message.tags %}{{ message.tags }}{% endif %}">
+                {{ message }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<hr>
+
