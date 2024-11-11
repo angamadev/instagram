@@ -11,7 +11,8 @@
         <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
         </ul>
-            <p> <strong>{% trans "Bienvenido " %}{{ request.user }} </strong></p>
+                <button class="btn btn-info"> <a href={% url "profiles:profile" %}>{% trans "Ver mi Perfil" %}</a> </button>
+
         </form>
     {% else %}
             <li><a href={% url "registro" %}>{% trans "Registro" %}</a></li>
@@ -20,14 +21,23 @@
         </ul>
     {% endif %}
 
-{% if messages %}
-    <ul class="messages">
+<div class="row mt-2 mb-2">
+    <div class="col-sm">
         {% for message in messages %}
-            <li class="{% if message.tags %}{{ message.tags }}{% endif %}">
+            <div class="alert
+                {% if message.tags %}
+                    {% if message.tags == 'error' %}
+                        alert-danger
+                    {% else %}
+                        alert-{{ message.tags }}
+                    {% endif %}
+                {% else %}
+                    alert-info
+                {% endif %}">
                 {{ message }}
-            </li>
+            </div>
         {% endfor %}
-    </ul>
-{% endif %}
+    </div>
+</div>
 <hr>
 

@@ -11,11 +11,13 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 TEMPLATES_DIR = BASE_DIR / "instagram" / "templates"
 STATIC_DIR = BASE_DIR / "instagram" / "static"
+
 
 
 # Quick-start development settings - unsuitable for production
@@ -46,6 +48,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'rosetta',
     'modeltranslation',
+    'easy_thumbnails',
 
     "notifications",
     "posts",
@@ -55,6 +58,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.locale.LocaleMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -146,6 +150,9 @@ LOCALE_PATHS = [
 # https://docs.djangoproject.com/en/5.1/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [STATIC_DIR,]
+STATIC_ROOT = BASE_DIR / "staticfiles/"
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
@@ -156,10 +163,35 @@ INTERNAL_IPS = [
     "127.0.0.1",
 ]
 
-LOGIN_URL = "user:login"
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR,'media')
+
+LOGIN_URL = "login"
 LOGIN_REDIRECT_URL = "home"
 LOGOUT_REDIRECT_URL = "home"
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
 CRISPY_TEMPLATE_PACK = "bootstrap5"
+
+# Configuracion de correo
+# Mail is sent using the SMTP host and port specified in the EMAIL_HOST and EMAIL_PORT settings. 
+# The EMAIL_HOST_USER and EMAIL_HOST_PASSWORD settings, if set, are used to authenticate to the SMTP server, 
+# and the EMAIL_USE_TLS and EMAIL_USE_SSL settings control whether a secure connection is used.
+
+EMAIL_HOST = "smtp.ionos.es"
+EMAIL_PORT = 587
+EMAIL_HOST_USER = "info@angamadev.com"
+EMAIL_HOST_PASSWORD = "Andrea1974+"
+EMAIL_USE_TLS =True
+
+# Para configurar easy_thumbnails
+
+THUMBNAIL_ALIASES = {
+    '': {
+        'avatar': {'size': (50, 50), 'crop': True},
+        'small': {'size': (100, 100), 'crop': True},
+        'medium': {'size': (500, 500), 'crop': True},
+        'large': {'size': (1000, 1000), 'crop': True},
+    },
+}
 

@@ -8,16 +8,16 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-05 13:17+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"POT-Creation-Date: 2024-11-08 15:17+0000\n"
+"PO-Revision-Date: 2024-11-08 15:21+0000\n"
+"Last-Translator:   <AGM@agm.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? "
-"1 : 2;\n"
+"Plural-Forms: nplurals=3; plural=n == 1 ? 0 : n != 0 && n % 1000000 == 0 ? 1 : 2;\n"
+"X-Translated-Using: django-rosetta 0.10.1\n"
 
 #: env/lib/python3.12/site-packages/django/contrib/messages/apps.py:16
 msgid "Messages"
@@ -82,8 +82,8 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/django/core/validators.py:315
 msgid ""
-"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or "
-"hyphens."
+"Enter a valid “slug” consisting of Unicode letters, numbers, underscores, or"
+" hyphens."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/core/validators.py:327
@@ -295,15 +295,15 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1556
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD HH:MM[:ss[."
-"uuuuuu]][TZ] format."
+"“%(value)s” value has an invalid format. It must be in YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ] format."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1564
 #, python-format
 msgid ""
-"“%(value)s” value has the correct format (YYYY-MM-DD HH:MM[:ss[.uuuuuu]]"
-"[TZ]) but it is an invalid date/time."
+"“%(value)s” value has the correct format (YYYY-MM-DD "
+"HH:MM[:ss[.uuuuuu]][TZ]) but it is an invalid date/time."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1569
@@ -322,8 +322,8 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1859
 #, python-format
 msgid ""
-"“%(value)s” value has an invalid format. It must be in [DD] [[HH:]MM:]ss[."
-"uuuuuu] format."
+"“%(value)s” value has an invalid format. It must be in [DD] "
+"[[HH:]MM:]ss[.uuuuuu] format."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/db/models/fields/__init__.py:1863
@@ -482,7 +482,8 @@ msgid "Many-to-many relationship"
 msgstr ""
 
 #. Translators: If found as last label character, these punctuation
-#. characters will prevent the default label_suffix to be appended to the label
+#. characters will prevent the default label_suffix to be appended to the
+#. label
 #: env/lib/python3.12/site-packages/django/forms/boundfield.py:185
 msgid ":?.!"
 msgstr ""
@@ -532,7 +533,8 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/django/forms/fields.py:637
 #, python-format
-msgid "Ensure this filename has at most %(max)d character (it has %(length)d)."
+msgid ""
+"Ensure this filename has at most %(max)d character (it has %(length)d)."
 msgid_plural ""
 "Ensure this filename has at most %(max)d characters (it has %(length)d)."
 msgstr[0] ""
@@ -639,7 +641,8 @@ msgid "The inline value did not match the parent instance."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/forms/models.py:1450
-msgid "Select a valid choice. That choice is not one of the available choices."
+msgid ""
+"Select a valid choice. That choice is not one of the available choices."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/forms/models.py:1594
@@ -1099,10 +1102,10 @@ msgstr ""
 
 #: env/lib/python3.12/site-packages/django/views/csrf.py:45
 msgid ""
-"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or "
-"including the “Referrer-Policy: no-referrer” header, please remove them. The "
-"CSRF protection requires the “Referer” header to do strict referer checking. "
-"If you’re concerned about privacy, use alternatives like <a "
+"If you are using the <meta name=\"referrer\" content=\"no-referrer\"> tag or"
+" including the “Referrer-Policy: no-referrer” header, please remove them. "
+"The CSRF protection requires the “Referer” header to do strict referer "
+"checking. If you’re concerned about privacy, use alternatives like <a "
 "rel=\"noreferrer\" …> for links to third-party sites."
 msgstr ""
 
@@ -1154,8 +1157,8 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/views/generic/dates.py:652
 #, python-format
 msgid ""
-"Future %(verbose_name_plural)s not available because %(class_name)s."
-"allow_future is False."
+"Future %(verbose_name_plural)s not available because "
+"%(class_name)s.allow_future is False."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/views/generic/dates.py:692
@@ -1213,10 +1216,10 @@ msgstr ""
 #: env/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:208
 #, python-format
 msgid ""
-"You are seeing this page because <a href=\"https://docs.djangoproject.com/en/"
-"%(version)s/ref/settings/#debug\" target=\"_blank\" "
-"rel=\"noopener\">DEBUG=True</a> is in your settings file and you have not "
-"configured any URLs."
+"You are seeing this page because <a "
+"href=\"https://docs.djangoproject.com/en/%(version)s/ref/settings/#debug\" "
+"target=\"_blank\" rel=\"noopener\">DEBUG=True</a> is in your settings file "
+"and you have not configured any URLs."
 msgstr ""
 
 #: env/lib/python3.12/site-packages/django/views/templates/default_urlconf.html:217
@@ -1247,40 +1250,24 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: instagram/forms/contact_form.py:21
-msgid "El comentario debe tener al menos 5 caracteres"
-msgstr ""
-
-#: instagram/forms/contact_form.py:27 instagram/forms/user_forms.py:60
-msgid "El nombre debe tener al menos 5 caracteres"
-msgstr ""
-
-#: instagram/forms/user_forms.py:7 instagram/forms/user_forms.py:20
-msgid "Nombre de usuario"
-msgstr ""
-
-#: instagram/forms/user_forms.py:13 instagram/forms/user_forms.py:37
-msgid "Contraseña"
-msgstr ""
-
-#: instagram/forms/user_forms.py:24
+#: instagram/forms/contact_form.py:10
 msgid "Nombre"
 msgstr ""
 
-#: instagram/forms/user_forms.py:28
-msgid "Apellidos"
+#: instagram/forms/contact_form.py:14
+msgid "Correo electronico"
 msgstr ""
 
-#: instagram/forms/user_forms.py:32
-msgid "Email"
+#: instagram/forms/contact_form.py:17
+msgid "Comentario"
 msgstr ""
 
-#: instagram/forms/user_forms.py:42
-msgid "Repite tu contraseña"
+#: instagram/forms/contact_form.py:24
+msgid "El comentario debe tener al menos 5 caracteres"
 msgstr ""
 
-#: instagram/forms/user_forms.py:50
-msgid "Las contraseñas no coinciden"
+#: instagram/forms/contact_form.py:30
+msgid "El nombre debe tener al menos 5 caracteres"
 msgstr ""
 
 #: instagram/templates/_includes/_footer_principal.html:5
@@ -1303,9 +1290,14 @@ msgstr ""
 msgid "Bienvenido "
 msgstr ""
 
-#: instagram/templates/_includes/_menu_principal.html:19
-msgid "Login"
+#: instagram/templates/_includes/_menu_principal.html:17
+#: instagram/templates/general/registro.html:7
+msgid "Registro"
 msgstr ""
+
+#: instagram/templates/_includes/_menu_principal.html:18
+msgid "Login"
+msgstr "Acceso"
 
 #: instagram/templates/general/contact.html:7
 #: instagram/templates/general/contact.html:9
@@ -1318,8 +1310,6 @@ msgstr ""
 
 #: instagram/templates/general/contact.html:19
 #: instagram/templates/general/login.html:25
-#: instagram/templates/general/registro.html:19
-#: instagram/templates/general/search.html:15
 msgid "Enviar"
 msgstr ""
 
@@ -1329,6 +1319,10 @@ msgstr ""
 
 #: instagram/templates/general/home.html:5
 msgid "Homepage"
+msgstr "Pagina Inicio"
+
+#: instagram/templates/general/home.html:7
+msgid "Bienvenido a "
 msgstr ""
 
 #: instagram/templates/general/home.html:10
@@ -1357,42 +1351,14 @@ msgstr ""
 msgid "logeado correctamente"
 msgstr ""
 
-#: instagram/templates/general/search.html:7
-msgid "Pagina de busqueda"
+#: instagram/templates/general/registro.html:8
+msgid "Registro de Usuario"
 msgstr ""
 
-#: instagram/templates/general/search.html:8
-msgid "Bienvenido a la pagina de Busqueda"
+#: instagram/templates/general/registro.html:19
+msgid "Registrar"
 msgstr ""
 
-#: instagram/templates/general/search.html:11
-msgid "Contenido de la pagina de Busqueda"
-msgstr ""
-
-#: instagram/templates/general/search.html:21
-msgid "Resultado"
-msgstr ""
-
-#: instagram/templates/general/search.html:23
-msgid "Editoriales:"
-msgstr ""
-
-#: instagram/templates/general/search.html:31
-msgid "No existen Editoriales con los criterios de busqueda "
-msgstr ""
-
-#: instagram/templates/general/search.html:33
-msgid "Autores: "
-msgstr ""
-
-#: instagram/templates/general/search.html:41
-msgid " No existen Autores con los criterios de busqueda "
-msgstr ""
-
-#: instagram/templates/general/search.html:44
-msgid "Libros: "
-msgstr ""
-
-#: instagram/templates/general/search.html:52
-msgid "No existen Libros con los criterios de busqueda"
+#: instagram/views.py:30
+msgid "Usuario Registrado correctamente!"
 msgstr ""

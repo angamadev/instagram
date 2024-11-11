@@ -1,0 +1,28 @@
+{% extends "general/layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+
+{% block head_title %}Perfil{% endblock %}
+{% block h1_title %}{% trans "Mi Perfil" %}{% endblock %} 
+{% block page_content %}
+{% load static %}
+
+
+  <h2> Mi pagina de perfil </h2>
+  {% for perfil in perfiles %}
+    {% if perfil.user == request.user %}
+      <article id="{{ perfil.pk }}">
+        <p> Perfil de {{ perfil.user}}</p> 
+        <picture>
+          <img src="{% thumbnail  perfil.profile_picture 'medium'  %}">
+        </picture>
+        <p> Biografia: {{ perfil.bio }} </p>
+      </article>
+      {% endif %}
+  {% endfor %}
+  {% comment %} <button class="btn btn-info">{% trans "Actualizar" %}</button> {% endcomment %}
+    <hr>
+
+
+{% endblock %}

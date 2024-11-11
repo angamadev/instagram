@@ -17,15 +17,16 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path,include
 from debug_toolbar.toolbar import debug_toolbar_urls
+from django.conf.urls.static import static
 from .views import (
     HomeView,
     logout_view,
     MyLoginView,
     ContactUsFormView,
-    CustomLogoutView
+    # CustomLogoutView,
+    RegisterView,
 )
-from .forms.user_forms import registro_view
-from django.conf.urls.i18n import i18n_patterns
+
 from django.conf import settings
 
 urlpatterns = [
@@ -33,11 +34,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path("",HomeView.as_view(), name="home"),
     path("login",MyLoginView.as_view(), name="login"),
-    path("registro", registro_view, name='registro'),
+    path("registro", RegisterView.as_view(), name='registro'),
     path("logout",logout_view, name="logout"),
     path("contact", ContactUsFormView.as_view(), name='contacto'),
-
-] + debug_toolbar_urls()
+    path('profiles/', include('profiles.urls', namespace='profiles')),
+    
+] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 if 'rosetta' in settings.INSTALLED_APPS:
     urlpatterns += [

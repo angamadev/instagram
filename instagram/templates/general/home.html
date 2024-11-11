@@ -1,11 +1,24 @@
 {% extends "general/layout.html" %}
 {% load i18n %}
 {% load crispy_forms_tags %}
+{% load thumbnail %}
 
 {% block head_title %}{% trans "Homepage" %}{% endblock %}
 
-{% block h1_title %}Bienvenido a INSTACONQUER{% endblock %} 
+{% block h1_title %}{% trans "Bienvenido a " %}INSTACONQUER {% if request.user.is_authenticated %} {{ request.user }} {% endif %}{% endblock %} 
 
 {% block page_content %}
     <p> {% trans "Contenido de la pagina Home" %}</p>
+    {% if request.user.is_authenticated %}
+        {% for perfil in perfiles %}
+            <article id="{{ perfil.pk }}">
+                <h2> Perfil {{ perfil.user }} </h2>
+                <picture>
+                    <img src="{% thumbnail  perfil.profile_picture 'small'  %}">
+                </picture>
+                <p><a href={% url 'profiles:profile_detail' perfil.pk %}> Ver el Perfil </a></p>
+                <hr>
+            </article>  
+        {% endfor %} 
+    {% endif %}
 {% endblock %}

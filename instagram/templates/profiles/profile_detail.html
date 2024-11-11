@@ -1,0 +1,23 @@
+{% extends "general/layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+{% block h1_title %}Usuario logueado {{ request.user }}{% endblock %} 
+
+
+{% block page_content %}
+{% load static %}
+
+  <h1>Detalle de Perfil {{ userprofile.user }}</h1>
+    <h2>Foto de Perfil de {{ userprofile.user }}</h2>
+      <article id="{{ userprofile.pk }}">
+        <picture>
+          <img src="{% thumbnail  userprofile.profile_picture 'medium'  %}">
+        </picture>
+        <p> Biografia: {{ userprofile.bio }} </p>
+      </article>
+    <hr>
+    <button class="btn btn-warning"><a href={% url 'profiles:profile_update' profile.pk %}>{% trans "Actualizar" %}</a></button>
+
+
+{% endblock %}

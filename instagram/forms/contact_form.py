@@ -1,17 +1,20 @@
 from django import forms
+from django.forms import ModelForm
 from django.utils.translation import gettext as _
+from django.utils.translation import gettext_lazy as _lazy
 
 
 class ContactForm(forms.Form):
+    
     nombre = forms.CharField(
-        label="nombre",
+        label=_("Nombre"),
         max_length=100
     )
     email = forms.EmailField(
-        label="email",
+        label=_("Correo electronico"),
     )
     comentario = forms.CharField(
-        label="comentario",
+        label=_("Comentario"),
         max_length= 300,
         widget=forms.Textarea,
     )

@@ -8,8 +8,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-05 13:16+0000\n"
-"PO-Revision-Date: 2024-11-05 19:45+0000\n"
+"POT-Creation-Date: 2024-11-08 15:17+0000\n"
+"PO-Revision-Date: 2024-11-08 15:19+0000\n"
 "Last-Translator:   <AGM@agm.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
@@ -1250,152 +1250,149 @@ msgstr ""
 msgid "None"
 msgstr ""
 
-#: instagram/forms/contact_form.py:21
-msgid "El comentario debe tener al menos 5 caracteres"
-msgstr ""
-
-#: instagram/forms/contact_form.py:27 instagram/forms/user_forms.py:60
-msgid "El nombre debe tener al menos 5 caracteres"
-msgstr ""
-
-#: instagram/forms/user_forms.py:7 instagram/forms/user_forms.py:20
-msgid "Nombre de usuario"
-msgstr ""
-
-#: instagram/forms/user_forms.py:13 instagram/forms/user_forms.py:37
-msgid "Contraseña"
-msgstr ""
-
-#: instagram/forms/user_forms.py:24
+#: instagram/forms/contact_form.py:10
 msgid "Nombre"
-msgstr ""
+msgstr "First name"
 
-#: instagram/forms/user_forms.py:28
-msgid "Apellidos"
-msgstr ""
+#: instagram/forms/contact_form.py:14
+msgid "Correo electronico"
+msgstr "Email"
 
-#: instagram/forms/user_forms.py:32
-msgid "Email"
-msgstr ""
+#: instagram/forms/contact_form.py:17
+msgid "Comentario"
+msgstr "Comment"
 
-#: instagram/forms/user_forms.py:42
-msgid "Repite tu contraseña"
-msgstr ""
+#: instagram/forms/contact_form.py:24
+msgid "El comentario debe tener al menos 5 caracteres"
+msgstr "Comment must be at least 5 characters"
 
-#: instagram/forms/user_forms.py:50
-msgid "Las contraseñas no coinciden"
-msgstr ""
+#: instagram/forms/contact_form.py:30
+msgid "El nombre debe tener al menos 5 caracteres"
+msgstr "The name must be at least 5 characters"
 
 #: instagram/templates/_includes/_footer_principal.html:5
 msgid " - Conquer Blocks, Todos los derechos reservados "
-msgstr ""
+msgstr "- Conquer Blocks, All rights reserved"
 
 #: instagram/templates/_includes/_menu_principal.html:6
 msgid "Inicio"
-msgstr ""
+msgstr "Home"
 
 #: instagram/templates/_includes/_menu_principal.html:7
 msgid "Contacto"
-msgstr ""
+msgstr "Contact"
 
 #: instagram/templates/_includes/_menu_principal.html:10
 msgid "Cerrar Sesion"
-msgstr ""
+msgstr "Logout"
 
 #: instagram/templates/_includes/_menu_principal.html:14
 msgid "Bienvenido "
-msgstr "Wellcome"
+msgstr "Wellcome "
 
-#: instagram/templates/_includes/_menu_principal.html:19
+#: instagram/templates/_includes/_menu_principal.html:17
+#: instagram/templates/general/registro.html:7
+msgid "Registro"
+msgstr "Register"
+
+#: instagram/templates/_includes/_menu_principal.html:18
 msgid "Login"
-msgstr ""
+msgstr "Login"
 
 #: instagram/templates/general/contact.html:7
 #: instagram/templates/general/contact.html:9
 msgid "Pagina de contacto"
-msgstr ""
+msgstr "Contact us"
 
 #: instagram/templates/general/contact.html:14
 msgid "Formulario enviado correctamente, Gracias "
-msgstr ""
+msgstr "Form sent correctly, Thank you"
 
 #: instagram/templates/general/contact.html:19
 #: instagram/templates/general/login.html:25
-#: instagram/templates/general/registro.html:19
-#: instagram/templates/general/search.html:15
 msgid "Enviar"
-msgstr ""
+msgstr "Send"
 
 #: instagram/templates/general/contact.html:23
 msgid "Escribenos a "
-msgstr ""
+msgstr "Send to "
 
 #: instagram/templates/general/home.html:5
 msgid "Homepage"
-msgstr ""
+msgstr "Homepage"
+
+#: instagram/templates/general/home.html:7
+msgid "Bienvenido a "
+msgstr "Wellcome to "
 
 #: instagram/templates/general/home.html:10
 msgid "Contenido de la pagina Home"
-msgstr ""
+msgstr "Content of Home"
 
 #: instagram/templates/general/layout.html:9
 #: instagram/templates/general/layout.html:28
 msgid "Titulo Base"
-msgstr ""
+msgstr "Base Title"
 
 #: instagram/templates/general/layout.html:45
 msgid "Cambiar Idioma"
-msgstr ""
+msgstr "Change Language"
 
 #: instagram/templates/general/login.html:7
 #: instagram/templates/general/login.html:9
 msgid "Acceso"
-msgstr ""
+msgstr "Login"
 
 #: instagram/templates/general/login.html:19
 msgid "Usuario "
-msgstr ""
+msgstr "User"
 
 #: instagram/templates/general/login.html:19
 msgid "logeado correctamente"
-msgstr ""
+msgstr "correctly logged in"
 
-#: instagram/templates/general/search.html:7
-msgid "Pagina de busqueda"
-msgstr ""
+#: instagram/templates/general/registro.html:8
+msgid "Registro de Usuario"
+msgstr "Username"
 
-#: instagram/templates/general/search.html:8
-msgid "Bienvenido a la pagina de Busqueda"
-msgstr "Search Page"
+#: instagram/templates/general/registro.html:19
+msgid "Registrar"
+msgstr "Register"
 
-#: instagram/templates/general/search.html:11
-msgid "Contenido de la pagina de Busqueda"
-msgstr ""
+#: instagram/views.py:30
+msgid "Usuario Registrado correctamente!"
+msgstr "User created correctly"
 
-#: instagram/templates/general/search.html:21
-msgid "Resultado"
-msgstr ""
+#~ msgid "Email"
+#~ msgstr "Email"
 
-#: instagram/templates/general/search.html:23
-msgid "Editoriales:"
-msgstr ""
+#~ msgid "Nombre de usuario"
+#~ msgstr "Username"
 
-#: instagram/templates/general/search.html:31
-msgid "No existen Editoriales con los criterios de busqueda "
-msgstr ""
+#~ msgid "Contraseña"
+#~ msgstr "Password"
 
-#: instagram/templates/general/search.html:33
-msgid "Autores: "
-msgstr ""
+#~ msgid "Apellidos"
+#~ msgstr "Last name"
 
-#: instagram/templates/general/search.html:41
-msgid " No existen Autores con los criterios de busqueda "
-msgstr ""
+#~ msgid "Repite tu contraseña"
+#~ msgstr "Repeat password"
 
-#: instagram/templates/general/search.html:44
-msgid "Libros: "
-msgstr ""
+#~ msgid "Las contraseñas no coinciden"
+#~ msgstr "Passwords do not match"
 
-#: instagram/templates/general/search.html:52
-msgid "No existen Libros con los criterios de busqueda"
-msgstr ""
+#~ msgid "Pagina de busqueda"
+#~ msgstr "Search page"
+
+#~ msgid "Bienvenido a la pagina de Busqueda"
+#~ msgstr "Search Page"
+
+#~ msgid "Contenido de la pagina de Busqueda"
+#~ msgstr "Content of search"
+
+#~ msgid "Resultado"
+#~ msgstr "Outcome"
+
+#, fuzzy
+#~ msgid "Bienvenido a INSTACONQUER"
+#~ msgstr "Wellcome "

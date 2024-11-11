@@ -16,7 +16,7 @@
     <form action="" method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <button class="btn btn-success"> {% trans "Enviar" %} </button>
+        <button class="btn btn-success"> {% trans "Registrar" %} </button>
     </form>
   {% else %}
     <p style="color: red;"> {{ msg }} </p>
