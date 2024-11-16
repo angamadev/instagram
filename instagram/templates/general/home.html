@@ -5,7 +5,11 @@
 
 {% block head_title %}{% trans "Homepage" %}{% endblock %}
 
-{% block h1_title %}{% trans "Bienvenido a " %}INSTACONQUER {% if request.user.is_authenticated %} {{ request.user }} {% endif %}{% endblock %} 
+{% block h1_title %}{% trans "Bienvenido a " %}INSTACONQUER 
+    {% if request.user.is_authenticated %} 
+        {{ request.user }} 
+    {% endif %}
+{% endblock %} 
 
 {% block page_content %}
     <p> {% trans "Contenido de la pagina Home" %}</p>

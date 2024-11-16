@@ -1,23 +1,23 @@
 from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
-from .models import UserProfile
-from django.urls import reverse_lazy
+from django.views.generic import DetailView,CreateView,UpdateView,DeleteView # ListView
+from .models import UserProfile,Follow
+from django.urls import reverse_lazy,reverse
 from django.contrib import messages
 
 
 # Create your views here.
-@method_decorator(login_required,name='dispatch')
-class ProfileListView(ListView):
-    model = UserProfile
-    template_name = 'profiles/profile.html'
-    context_object_name = "userprofiles"
+# @method_decorator(login_required,name='dispatch')
+# class ProfileListView(ListView):
+#     model = UserProfile
+#     template_name = 'profiles/profile.html'
+#     context_object_name = "userprofiles"
     
-    def get_context_data(self, **kwargs):
-        context = super().get_context_data(**kwargs)
-        context["perfiles"] = UserProfile.objects.all()
-        return context
+#     def get_context_data(self, **kwargs):
+#         context = super().get_context_data(**kwargs)
+#         context["perfiles"] = UserProfile.objects.all()
+#         return context
 
 
 @method_decorator(login_required,name='dispatch')
@@ -28,7 +28,7 @@ class ProfileDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context["perfiles"] = UserProfile.objects.all()
+        context["perfil"] = UserProfile.objects.all()
         return context
     
 @method_decorator(login_required,name='dispatch')
@@ -44,9 +44,8 @@ class ProfileUpdateView(UpdateView):
     context_object_name = "profile"
     
     def form_valid(self, form):
-        response = super().form_valid(form)
-        messages.success(self.request, '¡La formacion ha sido Modificada correctamente!')
-        return response
+        messages.add_message(self.request, messages.SUCCESS,'¡Perfil editado correctamente!')
+        return super(ProfileUpdateView, self).form_valid(form)
 
     def get_success_url(self):
-        return reverse_lazy('profiles/profile_detail.html')
+        return reverse("profiles:profile_detail",args=[self.object.pk])

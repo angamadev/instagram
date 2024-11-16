@@ -21,7 +21,7 @@
       </article>
       {% endif %}
   {% endfor %}
-  {% comment %} <button class="btn btn-info">{% trans "Actualizar" %}</button> {% endcomment %}
+  {% comment %} <a href={% url "profiles:profile_update" perfil.pk %}><button class="btn btn-info">{% trans "Actualizar" %}</button></a> {% endcomment %}
     <hr>
 
 

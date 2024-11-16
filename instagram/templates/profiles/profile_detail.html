@@ -15,9 +15,12 @@
           <img src="{% thumbnail  userprofile.profile_picture 'medium'  %}">
         </picture>
         <p> Biografia: {{ userprofile.bio }} </p>
+        <p> Seguidores: {{ userprofile.followers.count }} </p>
       </article>
     <hr>
-    <button class="btn btn-warning"><a href={% url 'profiles:profile_update' profile.pk %}>{% trans "Actualizar" %}</a></button>
-
+    {% if request.user.profile.pk == userprofile.pk %}
+    {% comment %} {% if perfil.user == request.user %} {% endcomment %}
+      <button class="btn btn-warning"><a href={% url 'profiles:profile_update' userprofile.pk %}>{% trans "Actualizar" %}</a></button>
+    {% endif %}
 
 {% endblock %}

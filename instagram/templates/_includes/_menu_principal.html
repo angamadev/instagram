@@ -7,11 +7,12 @@
     <li><a href={% url 'contacto' %}>{% trans "Contacto"%}</a>
 
     {% if request.user.is_authenticated %}
-        <li type="submit"><a href={% url "logout" %}>{% trans "Cerrar Sesion" %}</a></li>
+        <li><a href={% url "profiles:profile_detail" request.user.profile.pk  %}>{% trans "Ver mi Perfil" %}</a></li>
+        <li><a href={% url "posts:post_create" %}>{% trans "Nueva Publicacion" %}</a></li>
+        <li><a href={% url "logout" %}>{% trans "Cerrar Sesion" %}</a></li>
         <form method="POST" action="{% url 'logout' %}">
             {% csrf_token %}
         </ul>
-                <button class="btn btn-info"> <a href={% url "profiles:profile" %}>{% trans "Ver mi Perfil" %}</a> </button>
 
         </form>
     {% else %}

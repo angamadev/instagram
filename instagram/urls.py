@@ -38,6 +38,7 @@ urlpatterns = [
     path("logout",logout_view, name="logout"),
     path("contact", ContactUsFormView.as_view(), name='contacto'),
     path('profiles/', include('profiles.urls', namespace='profiles')),
+    path('posts/', include('posts.urls', namespace='posts')),
     
 ] + debug_toolbar_urls() + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -18,19 +18,19 @@ from django.contrib import admin
 from django.urls import path
 
 from .views import (
-    # ProfileListView,
-    ProfileDetailView,
-    ProfileUpdateView,
+    PostCreateView,
+    # ProfileDetailView,
+    # ProfileUpdateView,
     # BlogCreateView,
     # BlogDeteteView,
 )
-app_name = "profiles"
+app_name = "posts"
 
 urlpatterns = [
     # path("",ProfileListView.as_view(), name="profile"),
-    path("<pk>", ProfileDetailView.as_view(), name="profile_detail"),
-    # path("nuevo/", BlogCreateView.as_view(), name="blog_create"),
-    path("update/<pk>", ProfileUpdateView.as_view(), name="profile_update"),
+    # path("<pk>", ProfileDetailView.as_view(), name="profile_detail"),
+    path("create/", PostCreateView.as_view(), name="post_create"),
+    # path("update/<pk>", ProfileUpdateView.as_view(), name="profile_update"),
     # path("borrar/<pk>", BlogDeteteView.as_view(), name="blog_delete"),
     
 ]

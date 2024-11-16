@@ -4,7 +4,7 @@ from django.utils.translation import gettext_lazy as _lazy
 
 
 class Post(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='posts', verbose_name="Usuario")
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='posts', verbose_name=_lazy("Usuario"))
     image = models.ImageField(_lazy("Imagen"), upload_to="posts_images/")
     description = models.TextField(_lazy("Comentario"), max_length=500,blank=True)
     created_at = models.DateTimeField(_lazy("Fecha de creacion"), auto_now_add=True)

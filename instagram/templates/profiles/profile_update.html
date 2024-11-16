@@ -9,11 +9,11 @@
 {% load static %}
 <h2> Modificar Perfil de {{ userprofile.user }}</h2>
 
-  <form action="" method="POST">
+  <form action="" method="POST" enctype="multipart/form-data">
       {% csrf_token %}
       {{ form|crispy }}
-      {% comment %} <button class="btn btn-info">{% trans "Actualizar" %}</button>
-      <button class="btn btn-danger"><a href={% url 'profiles:profile_detail' userprofile.pk %}>{% trans "Cancelar" %}</a></button> {% endcomment %}
+      <button class="btn btn-info">{% trans "Actualizar" %}</button>
+      {% comment %} <button class="btn btn-danger"><a href={% url 'profiles:profile_detail'  perfil.pk %}>{% trans "Cancelar" %}</a></button> {% endcomment %}
 </form> 
 
 
