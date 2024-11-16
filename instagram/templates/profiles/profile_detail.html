@@ -20,7 +20,8 @@
     <hr>
     {% if request.user.profile.pk == userprofile.pk %}
     {% comment %} {% if perfil.user == request.user %} {% endcomment %}
-      <button class="btn btn-warning"><a href={% url 'profiles:profile_update' userprofile.pk %}>{% trans "Actualizar" %}</a></button>
+    <button class="btn btn-warning"><a href={% url 'profiles:profile_update' userprofile.pk %}>{% trans "Actualizar" %}</a></button>
+    <button class="btn btn-info"><a href={% url 'posts:post_list' %}>{% trans "Ver Publicaciones" %}</a></button>
     {% endif %}
 
 {% endblock %}

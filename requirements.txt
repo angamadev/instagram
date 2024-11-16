@@ -13,6 +13,7 @@ django-extensions==3.2.3
 django-modeltranslation==0.19.10
 django-rosetta==0.10.1
 django-thumbnails==0.8.0
+easy-thumbnails==2.10
 idna==3.10
 imageio==2.36.0
 imageio-ffmpeg==0.5.1

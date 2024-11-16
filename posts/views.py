@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView,TemplateView
 from .models import Post
 from django.contrib import messages
 from django.urls import reverse_lazy
@@ -22,3 +22,11 @@ class PostCreateView(CreateView):
 
     def get_success_url(self):
         return reverse_lazy('home')
+    
+class PostListView(TemplateView):
+    template_name = 'posts/post_list.html'
+    
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["publicaciones"] = Post.objects.filter()
+        return context
