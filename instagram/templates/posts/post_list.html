@@ -1,0 +1,19 @@
+{% extends "general/layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+
+{% block head_title %}Mis publicaciones{% endblock %}
+{% block h1_title %}{% trans "Mis publicaciones" %}{% endblock %} 
+{% block page_content %}
+{% load static %}
+
+
+  {% for post in publicaciones %}
+    {% if post.user_id == request.user.pk %}
+      {% include "_includes/_posts.html" %}
+    {% endif %}
+  {% endfor %}
+
+
+{% endblock %}

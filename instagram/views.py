@@ -13,6 +13,7 @@ from django.utils.translation import gettext as _
 from django.contrib import messages
 from django.contrib.auth.models import User
 from profiles.models import UserProfile
+from posts.models import Post
 
 
 # Create your views here.
@@ -23,7 +24,7 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["perfiles"] = UserProfile.objects.all()
-        context["img_perfiles"] = UserProfile.objects.filter(profile_picture=True)
+        context["last_posts"] = Post.objects.all().order_by('-created_at')[:5]
         return context
 
     

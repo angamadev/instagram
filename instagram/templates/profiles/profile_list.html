@@ -4,24 +4,22 @@
 {% load thumbnail %}
 
 {% block head_title %}Perfil{% endblock %}
-{% block h1_title %}{% trans "Mi Perfil" %}{% endblock %} 
+{% block h1_title %}INSTACONQUER{% endblock %} 
 {% block page_content %}
 {% load static %}
 
 
-  <h2> Mi pagina de perfil </h2>
-  {% for perfil in perfiles %}
-    {% if perfil.user == request.user %}
-      <article id="{{ perfil.pk }}">
+  <div class="container">
+    <h2>{% trans "Perfiles" %}</h2>
+      {% include "_includes/_profiles.html" %}
+
+      {% comment %} <article id="{{ perfil.pk }}" class="col-12 col-sm-6 col-">
         <p> Perfil de {{ perfil.user}}</p> 
         <picture>
           <img src="{% thumbnail  perfil.profile_picture 'medium'  %}">
         </picture>
         <p> Biografia: {{ perfil.bio }} </p>
-      </article>
-      {% endif %}
-  {% endfor %}
-  {% comment %} <a href={% url "profiles:profile_update" perfil.pk %}><button class="btn btn-info">{% trans "Actualizar" %}</button></a> {% endcomment %}
+      </article> {% endcomment %}
     <hr>
 
 

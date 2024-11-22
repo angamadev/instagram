@@ -1,44 +1,27 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-
 <ul>
-    <li><a href={% url 'home' %}>{% trans "Inicio" %} </a>
-    <li><a href={% url 'contacto' %}>{% trans "Contacto"%}</a>
+    <li><a href={% url 'home' %}>{% trans "Inicio" %} </a></li>
+    <li><a href={% url 'contacto' %}>{% trans "Contacto"%}</a></li>
 
-    {% if request.user.is_authenticated %}
-        <li><a href={% url "profiles:profile_detail" request.user.profile.pk  %}>{% trans "Ver mi Perfil" %}</a></li>
-        <li><a href={% url "posts:post_create" %}>{% trans "Nueva Publicacion" %}</a></li>
-        <li><a href={% url "logout" %}>{% trans "Cerrar Sesion" %}</a></li>
-        <form method="POST" action="{% url 'logout' %}">
-            {% csrf_token %}
-        </ul>
+        {% if request.user.is_authenticated %}
+            <li><a href={% url "profiles:profile_list" %}>{% trans "Perfiles" %}</a></li>
+            <li><a href={% url "profiles:profile_detail" request.user.profile.pk  %}>{% trans "Ver mi Perfil" %}</a></li>
+            <li><a href={% url "posts:post_create" %}>{% trans "Nueva Publicacion" %}</a></li>
+            <li><a href={% url "logout" %}>{% trans "Cerrar Sesion" %}</a></li>
+            <form method="POST" action="{% url 'logout' %}">
+                {% csrf_token %}
+            
 
-        </form>
-    {% else %}
-            <li><a href={% url "registro" %}>{% trans "Registro" %}</a></li>
-            <li><a href={% url "login" %}>{% trans "Login" %}</a></li>
-    
-        </ul>
-    {% endif %}
-
-<div class="row mt-2 mb-2">
-    <div class="col-sm">
-        {% for message in messages %}
-            <div class="alert
-                {% if message.tags %}
-                    {% if message.tags == 'error' %}
-                        alert-danger
-                    {% else %}
-                        alert-{{ message.tags }}
-                    {% endif %}
-                {% else %}
-                    alert-info
-                {% endif %}">
-                {{ message }}
-            </div>
-        {% endfor %}
+            </form>
+        {% else %}
+                <li><a href={% url "registro" %}>{% trans "Registro" %}</a></li>
+                <li><a href={% url "login" %}>{% trans "Login" %}</a></li>
+        
+        {% endif %}
     </div>
 </div>
+{% include "_includes/_messages.html" %}
 <hr>
 

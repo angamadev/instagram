@@ -10,15 +10,17 @@
 
 {% block page_content %}
 
-    {% if success %}
-    <h2> {% trans "Formulario enviado correctamente, Gracias " %}</h2>
-    {% else %}
-        <form action="" method="POST">
-            {% csrf_token %}
-            {{ form|crispy }}
-            <button class="btn btn-success">{% trans "Enviar" %}</button>
-        </form>       
-    {% endif %}
-
-    <p> {% trans "Escribenos a " %}<a href="mailto:conquerblocks@conquer.com">conquerblocks@conquer.com </a> </p>
+    <div class="container">
+        {% if success %}
+        <h2> {% trans "Formulario enviado correctamente, Gracias " %}</h2>
+        {% else %}
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-success">{% trans "Enviar" %}</button>
+            </form>       
+        {% endif %}
+        <p> {% trans "Escribenos a " %}<a href="mailto:conquerblocks@conquer.com">conquerblocks@conquer.com </a> </p>
+    </div>
+    
 {% endblock %}

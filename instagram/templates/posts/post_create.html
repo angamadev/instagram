@@ -8,18 +8,19 @@
 {% block h1_title %}{% trans "Nueva Publicacion" %}{% endblock %} 
 {% block page_content %}
   {% load static %}
-
-  {% if form %}
-    {% if error_message %}
-    <p style="color: red;"> {{ error_message }} </p>
+  <div class="container">
+    {% if form %}
+      {% if error_message %}
+      <p style="color: red;"> {{ error_message }} </p>
+      {% endif %}
+      <form action="" method="post" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button class="btn btn-success"> {% trans "Publicar" %} </button>
+      </form>
+    {% else %}
+      <p style="color: red;"> {{ msg }} </p>
     {% endif %}
-    <form action="" method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {{ form|crispy }}
-        <button class="btn btn-success"> {% trans "Publicar" %} </button>
-    </form>
-  {% else %}
-    <p style="color: red;"> {{ msg }} </p>
-  {% endif %}
+  </div>
 {% endblock %}
 

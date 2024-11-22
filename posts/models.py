@@ -1,11 +1,12 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.translation import gettext_lazy as _lazy
+from easy_thumbnails.fields import ThumbnailerImageField
 
 
 class Post(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='posts', verbose_name=_lazy("Usuario"))
-    image = models.ImageField(_lazy("Imagen"), upload_to="posts_images/")
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='posts', verbose_name=_lazy("Usuario"))
+    image = ThumbnailerImageField(_lazy("Imagen"), upload_to="posts_images/")
     description = models.TextField(_lazy("Comentario"), max_length=500,blank=True)
     created_at = models.DateTimeField(_lazy("Fecha de creacion"), auto_now_add=True)
     likes = models.ManyToManyField(User, verbose_name=_lazy("Nº de likes"),related_name='liked_posts', blank=True)

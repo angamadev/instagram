@@ -12,17 +12,12 @@
 {% endblock %} 
 
 {% block page_content %}
-    <p> {% trans "Contenido de la pagina Home" %}</p>
-    {% if request.user.is_authenticated %}
-        {% for perfil in perfiles %}
-            <article id="{{ perfil.pk }}">
-                <h2> Perfil {{ perfil.user }} </h2>
-                <picture>
-                    <img src="{% thumbnail  perfil.profile_picture 'small'  %}">
-                </picture>
-                <p><a href={% url 'profiles:profile_detail' perfil.pk %}> Ver el Perfil </a></p>
-                <hr>
-            </article>  
-        {% endfor %} 
-    {% endif %}
+    <div class="container">
+        <p> {% trans "Contenido de la pagina Home" %}</p>
+        {% if request.user.is_authenticated %}
+            <h2> Ultimas 5 Publicaciones </h2>
+            {% include "_includes/_lasts_posts.html" %}
+        {% endif %}
+    </div>
 {% endblock %}
+

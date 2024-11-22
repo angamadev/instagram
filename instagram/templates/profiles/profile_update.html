@@ -1,21 +1,23 @@
 {% extends "general/layout.html" %}
+
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
-{% block h1_title %}Usuario logueado {{ request.user }}{% endblock %} 
+
+{% block h1_title %}{% trans "Usuario logueado" %} {{ request.user }}{% endblock %} 
 
 
 {% block page_content %}
 {% load static %}
-<h2> Modificar Perfil de {{ userprofile.user }}</h2>
 
-  <form action="" method="POST" enctype="multipart/form-data">
-      {% csrf_token %}
-      {{ form|crispy }}
-      <button class="btn btn-info">{% trans "Actualizar" %}</button>
-      {% comment %} <button class="btn btn-danger"><a href={% url 'profiles:profile_detail'  perfil.pk %}>{% trans "Cancelar" %}</a></button> {% endcomment %}
-</form> 
-
-
+  <div class="container">
+    <h2> {% trans "Modificar Perfil de " %} {{ request.user }}</h2>
+      <form action="" method="POST" enctype="multipart/form-data">
+          {% csrf_token %}
+          {{ form|crispy }}
+          <button class="btn btn-info">{% trans "Actualizar" %}</button>
+          {% comment %} <button class="btn btn-danger"><a href={% url 'profiles:profile_detail'  perfil.pk %}>{% trans "Cancelar" %}</a></button> {% endcomment %}
+    </form> 
+  </div>
 
 {% endblock %}

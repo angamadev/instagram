@@ -8,7 +8,7 @@ from easy_thumbnails.fields import ThumbnailerImageField
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile')
+    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',verbose_name=_lazy("Usuario"),)
     profile_picture = ThumbnailerImageField(_lazy('Imagen de perfil'), upload_to='profile_pictures/', blank=True, null=True)
     bio = models.TextField(_lazy('Biografía'), max_length=500, blank=True)
     birth_date = models.DateField(_lazy('Fecha de nacimiento'), null=True, blank=True)

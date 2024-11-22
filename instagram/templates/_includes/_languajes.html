@@ -1,0 +1,22 @@
+{% load i18n %}
+{% load crispy_forms_tags %}
+
+<!-- Contenido del select del Lenguaje -->
+<div class="col-md-2 text-end">
+    <form action="{% url 'set_language' %}" method="post">
+        <div class="col"> 
+            {% csrf_token %}
+            {{ form.language|crispy }}
+            <select class="form-select" name="language">
+                {% get_current_language as LANGUAGE_CODE %}
+                {% for lang_code, lang_name in LANGUAGES %}
+                    <option value="{{ lang_code }}" {% if LANGUAGE_CODE == lang_code %}selected{% endif %}>{{ lang_name }} ({{ lang_code }})</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="col">
+            <input type="hidden" name="next" value="{{ request.path }}">
+            <button class="btn btn-warning" type="submit">{% trans "Cambiar Idioma" %}</button>
+        </div>
+    </form>
+</div>
