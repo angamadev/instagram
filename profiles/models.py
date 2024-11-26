@@ -7,6 +7,7 @@ from django.utils.translation import gettext_lazy as _lazy
 from easy_thumbnails.fields import ThumbnailerImageField
 
 
+
 class UserProfile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='profile',verbose_name=_lazy("Usuario"),)
     profile_picture = ThumbnailerImageField(_lazy('Imagen de perfil'), upload_to='profile_pictures/', blank=True, null=True)
