@@ -19,16 +19,16 @@ class UserProfile(models.Model):
         verbose_name = 'Perfil'
         verbose_name_plural = 'Perfiles'
         
-    def follow(self, profile):
-        Follow.objects.get_or_create(follower=self, following=profile)
-
     def __str__(self):
         return self.user.username
     
+    def follow(self, profile):
+        Follow.objects.get_or_create(follower=self, following=profile)
+    
     
 class Follow(models.Model):
-    following = models.ForeignKey(UserProfile, verbose_name=_lazy("Siguiendo a"), on_delete=models.CASCADE,related_name="following_set")
     follower = models.ForeignKey(UserProfile, verbose_name=_lazy("Seguidor"), on_delete=models.CASCADE, related_name="follower_set")
+    following = models.ForeignKey(UserProfile, verbose_name=_lazy("Siguiendo a"), on_delete=models.CASCADE,related_name="following_set")
     created_at = models.DateTimeField(_lazy("Desde cuando lo sigue"), auto_now_add=True)
     
     class Meta:
