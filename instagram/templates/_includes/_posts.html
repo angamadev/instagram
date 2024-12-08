@@ -22,7 +22,6 @@
                         <p class="text-justify">{{ post.description }}  </p>
                     </div>
                     <div>
-                        # Añado el boton de Likes y su numero
                         <p class="text-center mt-3">
                             <a href="{% url 'posts:post_like_ajax' post.pk %}" class="likeButton">
                                 <span >{{ post.likes.count }}</span>

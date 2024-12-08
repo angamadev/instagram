@@ -3,7 +3,6 @@
 {% load i18n %}
 {% load static %}
 
-# Muestro el detalle del post
 <article id="{{ post.pk }}">
     <div class="container mt-5 mb-5">
         <div class="row d-flex align-items-center justify-content-center">
@@ -25,7 +24,6 @@
                             {{ post.description }}  
                         </p>
                         <div>
-                            # Añado el boton de likes y su numero
                             <p class="text-center mt-3">
                                 <a href="{% url 'posts:post_like_ajax' post.pk %}" class="likeButton">
                                     <span>{{ post.likes.all.count }}</span>
