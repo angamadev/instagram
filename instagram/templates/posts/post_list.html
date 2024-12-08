@@ -1,19 +1,27 @@
-{% extends "general/layout.html" %}
+{% comment %} {% extends "general/layout.html" %} {% endcomment %}
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
-
-{% block head_title %}Mis publicaciones{% endblock %}
-{% block h1_title %}{% trans "Mis publicaciones" %}{% endblock %} 
-{% block page_content %}
 {% load static %}
 
+{% block page_content %}
 
-  {% for post in publicaciones %}
-    {% if post.user_id == request.user.pk %}
-      {% include "_includes/_posts.html" %}
-    {% endif %}
-  {% endfor %}
-
+{% comment %} Si el usuario es el mismo que el usuario logueado 
+  entonces muestro las publicaciones del Perfil {% endcomment %}
+  {% if request.user.pk == userprofile.user.pk %}
+    {% for post in publicaciones %}
+        {% if post.user_id == userprofile.user.pk %}
+            {% include "_includes/_posts.html" %}
+        {% endif %} 
+    {% endfor %} 
+{% comment %} En cambio si no es el mismo perfil 
+  Muestro las publicaciones que tengan el mismo PK  {% endcomment %}
+  {% else %}
+    {% for post in publicaciones %}
+      {% if post.user_id == userprofile.user.pk %}
+        {% include "_includes/_posts.html" %}
+      {% endif %} 
+    {% endfor %}
+  {% endif %}
 
 {% endblock %}

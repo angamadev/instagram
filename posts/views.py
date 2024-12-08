@@ -2,13 +2,13 @@ from django.shortcuts import render
 from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView,TemplateView
 from .models import Post
 from django.contrib import messages
-from django.urls import reverse_lazy
 from instagram.forms.post_create_form import PostCreateForm
 from django.utils.translation import gettext_lazy as _lazy
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-
+from django.urls import reverse_lazy,reverse
+from django.http import HttpResponseRedirect,JsonResponse
 
 
 # Create your views here.
@@ -34,3 +34,53 @@ class PostListView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["publicaciones"] = Post.objects.all()
         return context
+
+@method_decorator(login_required,name='dispatch')
+class PostDetailView(DetailView):
+    
+    model = Post
+    template_name = "posts/post_detail.html"
+    context_object_name = "post"
+    # form_class = PostCreateForm
+
+    def get_success_url(self):
+        return reverse("posts:post_detail", args=[self.get_object().pk])
+
+@login_required
+def post_like(request,pk):
+    post = Post.objects.get(pk=pk)
+    if request.user in post.likes.all():
+        messages.add_message(request, messages.INFO, "Ya no te gusta esta publicacion.")
+        post.likes.remove(request.user)
+    else:
+        post.likes.add(request.user)
+        messages.add_message(request, messages.INFO, "Me gusta la publicacion")
+    
+    return HttpResponseRedirect(reverse("posts:post_detail", args=[pk]))
+    
+@login_required
+def post_like_ajax(request,pk):
+    post = Post.objects.get(pk=pk)
+    
+    if request.user in post.likes.all():
+        post.likes.remove(request.user)
+        return  JsonResponse(
+            {
+                'message':'Ya no te gusta esta publicacion.',
+                'liked': False,
+                'nLikes': post.likes.all().count()
+            }
+        )
+    else:
+        post.likes.add(request.user)
+        return  JsonResponse(
+            {
+                'message':'Me gusta la publicacion.',
+                'liked': True,
+                'nLikes': post.likes.all().count()
+            }
+        )
+
+    
+
+

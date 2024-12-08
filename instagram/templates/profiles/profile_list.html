@@ -12,14 +12,6 @@
   <div class="container">
     <h2>{% trans "Perfiles" %}</h2>
       {% include "_includes/_profiles.html" %}
-
-      {% comment %} <article id="{{ perfil.pk }}" class="col-12 col-sm-6 col-">
-        <p> Perfil de {{ perfil.user}}</p> 
-        <picture>
-          <img src="{% thumbnail  perfil.profile_picture 'medium'  %}">
-        </picture>
-        <p> Biografia: {{ perfil.bio }} </p>
-      </article> {% endcomment %}
     <hr>
 
 

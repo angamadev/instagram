@@ -7,17 +7,15 @@
 
 {% block h1_title %}{% trans "Bienvenido a " %}INSTACONQUER 
     {% if request.user.is_authenticated %} 
-        {{ request.user }} 
+        {{ request.user.username }} 
     {% endif %}
 {% endblock %} 
 
 {% block page_content %}
     <div class="container">
         <p> {% trans "Contenido de la pagina Home" %}</p>
-        {% if request.user.is_authenticated %}
             <h2> Ultimas 5 Publicaciones </h2>
             {% include "_includes/_lasts_posts.html" %}
-        {% endif %}
     </div>
 {% endblock %}
 

@@ -2,13 +2,17 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 {% load thumbnail %}
-{% block h1_title %}Usuario logueado {{ request.user }}{% endblock %} 
+{% block h1_title %}{% trans "Usuario logueado " %}{{ request.user.first_name }}{% endblock %} 
 
 {% load static %}
 {% block page_content %}
     <div class="container mt-4 ">
         <div class="d-flex justify-content-center">
-            <h1>Detalle de Perfil {{ userprofile.user }}</h1>
+            {% if userprofile.user != request.user %}
+                <h1>{% trans "Detalle de Perfil" %} {{ userprofile.user }}</h1>
+            {% else %}
+                <h1>{% trans "Mi perfil" %} </h1>
+            {% endif %}
         </div>
     </div>
     <div class="container mt-4 mb-5">
@@ -17,54 +21,26 @@
                 <div class="card">
                     <div class="d-flex justify-content-between p-2 px-3">
                         <div class="d-flex flex-row align-items-center"> <img src="{% thumbnail  userprofile.profile_picture 'small'  %}" width="50" class="rounded-circle">
-                            <div class="d-flex flex-column ml-2"> <span class="font-weight-bold">{{ userprofile.user }}</span> <small class="text-primary">Collegues</small> </div>
+                            <div class="d-flex flex-column ml-5"> 
+                                <span class="font-weight-bold ml-5">{{ userprofile.user.first_name }}</span> 
+                            </div>
                         </div>
                         <div class="d-flex flex-row mt-1 ellipsis">
-
-                            {% comment %} {% if userprofile.user not in request.user.userprofile.following_set.all %}
-                                <p>No lo estoy siguiendo</p>
-                                <p>
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        {{ form.profile_pk|as_crispy_field }} 
-                                        <input action="follow" type="hidden" name="profile_pk" value="{{ profile.pk }}">
-                                        <button>Seguir</button>
-                                    </form>
-                                </p>
-                            {% endif %} {% endcomment %}
                             {% if userprofile.user != request.user %}
                                 <form action="" method="post">
                                 {% csrf_token %}
                                 {{ form.profile_pk|as_crispy_field }}
                                     {% if following %}
-                                    <button class="btn btn-info" type="submit">Dejar de seguir</button>
+                                        <button class="btn btn-info" type="submit">Dejar de seguir</button>
                                     {% else %}
-                                    <button class="btn btn-info" type="submit">Seguir</button>
+                                        <button class="btn btn-info" type="submit">Seguir</button>
                                     {% endif %}
                                 </form>
                             {% endif %}
-                        
-
-                            {% comment %} {% if post.user == userprofile.user %}
-                                <div class="container mt-4 ">
-                                    <div class="d-flex justify-content-center">
-                                    <button class="btn btn-info"><a href={% url 'posts:post_list' %}>{% trans "Dejar de Seguir" %}</a></button>
-                                    </div>
-                                </div> 
-                            {% else %}
-                                <div class="container mt-4 ">
-                                    <div class="d-flex justify-content-center">
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="profile_pk" value="{{ profile.pk }}">
-                                        <button class="btn btn-info">{% trans "Seguir" %}</a></button>
-                                    </form>
-                                    </div>
-                                </div>
-                            {% endif %} {% endcomment %}
                             <i class="fa fa-ellipsis-h"></i> 
                         </div>
-                    </div> <img src="{% thumbnail  userprofile.profile_picture 'medium'  %}" class="img-fluid">
+                    </div>
+                    <img src="{% thumbnail  userprofile.profile_picture 'medium'  %}" class="img-fluid">
                     <div class="p-2">
                         <p class="text-justify">{{ userprofile.bio }} </p>
                     </div>
@@ -72,45 +48,35 @@
             </div>
         </div>
     </div>
-    {% if request.user.profile.pk == userprofile.pk %}
+
+    {% if following %}
         <div class="container mt-4 ">
             <div class="d-flex justify-content-center">
-            <button class="btn btn-warning"><a href={% url 'profiles:profile_update' userprofile.pk %}>{% trans "Actualizar" %}</a></button>
-            <button class="btn btn-info"><a href={% url 'posts:post_list' %}>{% trans "Ver Publicaciones" %}</a></button>
+                <h2> Publicaciones de {{ userprofile.user }} </h2>
             </div>
         </div>
-        <div class="container mt-4 ">
-            <div class="d-flex justify-content-center">
-                <p> Numero de Seguidores: {{ userprofile.followers.count }}</p>
-            </div>
-        </div>
-    {% endif %}
-    {% comment %} {% if request.user.profile.pk != userprofile.pk and following %} {% endcomment %}
-    {% comment %} {% if post.user == userprofile.user %} {% endcomment %}
-    {% if publicaciones %}
-        <hr>
-        <div class="container mt-4 ">
-            <div class="d-flex justify-content-center">
-                <h2> Sus publicaciones: </h2>
-            </div>
-        </div>
-        {% for post in publicaciones %}
-            {% include "_includes/_posts.html" %}
-        {% endfor %}
+        {% include "posts/post_list.html" %}
+
     {% else %}
-        {% for post in publicaciones %}
-            <div class="container mt-4 mb-5">
-                <div class="row d-flex align-items-center justify-content-center">
-                    <article id="{{ post.pk }}" class="m-3 ">
-                        <p class="d-flex justify-content-center m-3"> Publicada el {{ post.created_at}} - {{ userprofile.followers.count }} Me gustas</p> 
-                        <picture class="d-flex justify-content-center">
-                            <img src="{% thumbnail  post.image 'medium'  %}" class="rounded-3 ">
-                        </picture>
-                        <p class="d-flex justify-content-center mt-3"> Comentario: {{ post.description }} </p>
-                    </article>
+        
+        {% if request.user.profile.pk == userprofile.pk %}
+            <div class="container mt-4 ">
+                <div class="d-flex justify-content-center">
+                <button class="btn btn-warning"><a href={% url 'profiles:profile_update' userprofile.pk %}>{% trans "Actualizar" %}</a></button>
+                </div>
+            </div>
+            <div class="container mt-4 ">
+                <div class="d-flex justify-content-center">
+                    <p> Numero de Seguidores: {{ userprofile.followers.count }}</p>
                 </div>
             </div>
             <hr>
-        {% endfor %}
+            <div class="container mt-4 ">
+                <div class="d-flex justify-content-center">
+                    <h2> {% trans "Mis publicaciones" %}</h2>
+                </div>
+            </div>
+            {% include "posts/post_list.html" %}
+        {% endif %}
     {% endif %}
 {% endblock %}

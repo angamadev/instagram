@@ -1,0 +1,15 @@
+{% extends "general/layout.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{% load thumbnail %}
+{% block h1_title %}{% trans "Usuario logueado " %}{{ request.user.first_name }}{% endblock %} 
+
+{% load static %}
+{% block page_content %}
+
+    <div class="d-flex justify-content-center">
+        <h1>{% trans "Publicacion de " %} {{ post.user.first_name }}</h1>
+    </div>
+    {% include "_includes/_post_detail.html" %}
+
+{% endblock %}

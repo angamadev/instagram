@@ -24,7 +24,10 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context["perfiles"] = UserProfile.objects.all()
-        context["last_posts"] = Post.objects.all().order_by('-created_at')[:5]
+        if self.request.user.is_authenticated:
+            context["last_posts"] = Post.objects.all().exclude(user_id=self.request.user.pk).order_by('-created_at')[:5]
+        else: 
+            context["last_posts"] = Post.objects.all().order_by('-created_at')[:5]
         return context
 
     

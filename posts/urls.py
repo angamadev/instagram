@@ -20,17 +20,17 @@ from django.urls import path
 from .views import (
     PostCreateView,
     PostListView,
-    # ProfileDetailView,
-    # ProfileUpdateView,
-    # BlogCreateView,
-    # BlogDeteteView,
+    PostDetailView,
+    post_like,
+    post_like_ajax,
 )
 app_name = "posts"
 
 urlpatterns = [
     path("postlist",PostListView.as_view(), name="post_list"),
     path("create/", PostCreateView.as_view(), name="post_create"),
-    # path("update/<pk>", ProfileUpdateView.as_view(), name="profile_update"),
-    # path("borrar/<pk>", BlogDeteteView.as_view(), name="blog_delete"),
+    path("<pk>", PostDetailView.as_view(), name="post_detail"),    
+    path("like/<pk>", post_like, name="post_like"),
+    path("like-ajax/<pk>", post_like_ajax, name="post_like_ajax"),
     
 ]
