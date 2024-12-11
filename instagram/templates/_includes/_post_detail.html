@@ -28,14 +28,34 @@
                                 <a href="{% url 'posts:post_like_ajax' post.pk %}" class="likeButton">
                                     <span>{{ post.likes.all.count }}</span>
                                     {% if request.user in post.likes.all %}
-                                        <i class="bi bi-heart-fill"></i><i class="bi bi-chat">
-
+                                        <i class="bi bi-heart-fill"></i>
                                     {% else %}
-                                        <i class="bi bi-heart"></i><i class="bi bi-chat">
-
+                                        <i class="bi bi-heart"></i> 
                                     {% endif %}
                                 </a>
+                                <i class="bi bi-chat"></i> <span>{{ post.comments.all.count }}</span>
                             </p>
+                        </div>
+
+                        <div class="Comentarios">
+                                {% if  comments.user != request.user %}
+                                    <details>
+                                        <summary>Ver Comentarios:</summary>
+                                        <p>
+                                            {% for comment in post.comments.all  %}
+                                                <p>Contenido de los comentarios</p>
+                                            {% endfor %}
+                                        </p>
+                                    </details>
+                                {% endif %}
+                                {% if post.user != request.user %}
+                                    <form action="" method="post">
+                                        {% csrf_token %}
+                                        {{ form.text|as_crispy_field }}
+                                        <button class="btn btn-info" type="submit">Comentar</button>
+                                    </form>
+                                {% endif %}
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -43,3 +63,38 @@
         </div>
     </div>          
 </article>
+<!-- <h5>Comentarios</h5>
+{% if post.comments.all.count %}
+    {% for comment in post.comments.all %}
+        <article>
+            <header>
+                <strong>Autor:</strong> {{ comment.user }} <strong>Creado el:</strong> {{ comment.created_at }}
+            </header>
+            <div>
+                <p>{{ comment.text }}</p>
+            </div>
+        </article>
+    {% endfor %}
+    {% else %}
+    <p>Todavía no hay comentarios para esta publicación</p>
+{% endif %}
+    <div>
+        <details>
+            <summary>Nuevo comentario</summary>
+            <form method="post">
+            <div class="row">
+                <div class="col col-12">
+                {% csrf_token %}
+                {{ form.text|as_crispy_field }}
+                </div>
+                <div class="col col-12">
+                <button class="btn btn-sm btn-primary">Publicar</button>
+                </div>
+            </div>
+            </form>
+        </details>
+    </div>
+</section>
+</article>
+</div>
+</div> -->

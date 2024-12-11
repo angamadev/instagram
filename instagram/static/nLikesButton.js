@@ -23,12 +23,12 @@ document.addEventListener("DOMContentLoaded",() => {
                 // Si la peticion fue exitosa, cambiamos el contenido del boton
                 if (data.liked) {
                     nLikes += 1;
-                    likeButton.innerHTML = `<span>${nLikes}</span> <i class="bi bi-suit-heart-fill"></i>`;
+                    likeButton.innerHTML = `<span>${nLikes} </span><i class="bi bi-suit-heart-fill">`;
                     
                 // Si la peticion fue Falsa, cambiamos el contenido del boton
                 } else {
                     nLikes -= 1;
-                    likeButton.innerHTML = `<span>${nLikes}</span> <i class="bi bi-heart"></i>`;
+                    likeButton.innerHTML = `<span>${nLikes} </span><i class="bi bi-heart">`;
                 }
             });
         })

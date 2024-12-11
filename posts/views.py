@@ -1,8 +1,10 @@
 from django.shortcuts import render
-from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView,TemplateView
-from .models import Post
+from django.views.generic import ListView,DetailView,CreateView,UpdateView,DeleteView,TemplateView,FormView
+from .models import Post,Comments
 from django.contrib import messages
 from instagram.forms.post_create_form import PostCreateForm
+from instagram.forms.comment_create_form import CommentCreateForm
+
 from django.utils.translation import gettext_lazy as _lazy
 from django.utils.translation import gettext as _
 from django.contrib.auth.decorators import login_required
@@ -36,14 +38,21 @@ class PostListView(TemplateView):
         return context
 
 @method_decorator(login_required,name='dispatch')
-class PostDetailView(DetailView):
+class PostDetailView(DetailView,FormView):
     
     model = Post
     template_name = "posts/post_detail.html"
     context_object_name = "post"
-    # form_class = PostCreateForm
+    form_class = CommentCreateForm
+    
+    def form_valid(self, form):
+        form.instance.user = self.request.user
+        form.instance.post = self.get_object()
+        return super(PostDetailView, self).form_valid(form)
+
 
     def get_success_url(self):
+        messages.add_message(self.request, messages.SUCCESS,_('Comentario creado correctamente!'))
         return reverse("posts:post_detail", args=[self.get_object().pk])
 
 @login_required
@@ -80,7 +89,3 @@ def post_like_ajax(request,pk):
                 'nLikes': post.likes.all().count()
             }
         )
-
-    
-
-
