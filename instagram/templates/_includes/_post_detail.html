@@ -28,10 +28,11 @@
                                 <a href="{% url 'posts:post_like_ajax' post.pk %}" class="likeButton">
                                     <span>{{ post.likes.all.count }}</span>
                                     {% if request.user in post.likes.all %}
-                                        <i class="bi bi-heart-fill"></i>
+                                        <i class="bi bi-heart-fill"></i><i class="bi bi-chat">
+
                                     {% else %}
-                                        <i class="bi bi-heart"></i>
-                                    {% endif %}
+                                        <i class="bi bi-heart"></i><i class="bi bi-chat">
+         {% endif %}
                                 </a>
                             </p>
                         </div>
