@@ -19,9 +19,9 @@ class Post(models.Model):
         return f"{self.user.username} - {self.created_at}"
     
 class Comments(models.Model):
-    post = models.OneToOneField(Post, on_delete=models.CASCADE, related_name='comments')
-    user = models.OneToOneField(User, on_delete=models.CASCADE, related_name='comments')
-    text = models.TextField(_lazy("Comentario"), max_length=300)
+    post = models.ForeignKey(Post, verbose_name='Post al que pertenece el comentario',on_delete=models.CASCADE, related_name='comments')
+    user = models.ForeignKey(User, verbose_name='Autor',on_delete=models.CASCADE, related_name='comments')
+    text = models.TextField(_lazy("Contenido del comentario"), max_length=300)
     created_at = models.DateTimeField(_lazy("Fecha de creacion"), auto_now_add=True)
     
     class Meta:
@@ -30,3 +30,4 @@ class Comments(models.Model):
 
     def __str__(self):
         return f"Comentó {self.user.username} el post {self.post}"
+

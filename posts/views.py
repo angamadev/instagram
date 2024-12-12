@@ -36,7 +36,7 @@ class PostListView(TemplateView):
         context = super().get_context_data(**kwargs)
         context["publicaciones"] = Post.objects.all()
         return context
-
+    
 @method_decorator(login_required,name='dispatch')
 class PostDetailView(DetailView,FormView):
     
@@ -46,13 +46,13 @@ class PostDetailView(DetailView,FormView):
     form_class = CommentCreateForm
     
     def form_valid(self, form):
-        form.instance.user = self.request.user
         form.instance.post = self.get_object()
+        form.instance.user = self.request.user
+        form.save()  # Agrego esta línea para guardar el comentario
+        messages.add_message(self.request, messages.SUCCESS,_('Comentario añadido correctamente!'))
         return super(PostDetailView, self).form_valid(form)
-
-
+    
     def get_success_url(self):
-        messages.add_message(self.request, messages.SUCCESS,_('Comentario creado correctamente!'))
         return reverse("posts:post_detail", args=[self.get_object().pk])
 
 @login_required
