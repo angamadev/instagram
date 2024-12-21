@@ -59,24 +59,13 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
    python manage.py migrate
    ```
 
-6. Configura las variables de entorno:
-
-   - Crea un archivo `.env` en la raíz del proyecto.
-   - Agrega las siguientes variables:
-
-     ```env
-     SECRET_KEY=tu_clave_secreta
-     DEBUG=True  # Cambia a False en producción
-     ALLOWED_HOSTS=localhost,127.0.0.1
-     ```
-
-7. Inicia el servidor de desarrollo:
+6. Inicia el servidor de desarrollo:
 
    ```bash
    python manage.py runserver
    ```
 
-8. Abre tu navegador y visita:
+7. Abre tu navegador y visita:
 
    ```
    http://127.0.0.1:8000
@@ -140,6 +129,6 @@ Este proyecto está bajo la licencia MIT. Consulta el archivo [LICENSE](LICENSE)
 Si tienes alguna pregunta o comentario, no dudes en ponerte en contacto:
 
 - **GitHub:** [@angamadev](https://github.com/angamadev)
-- **Correo electrónico:** tu-email@ejemplo.com
+- **Correo electrónico:** angamadev@gmail.com
 
 ¡Gracias por visitar este proyecto! 🎉
