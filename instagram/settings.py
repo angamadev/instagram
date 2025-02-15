@@ -29,7 +29,7 @@ SECRET_KEY = 'django-insecure-))xks1v4t4u^ey6#mbh6ov$lu&dp-*q_m%&h0^^lm&if2ao6u0
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['instagram.angamadev.com', 'www.instagram.angamadev.com']
 
 
 # Application definition
