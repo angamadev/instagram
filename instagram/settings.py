@@ -195,3 +195,4 @@ THUMBNAIL_ALIASES = {
     },
 }
 
+ALLOWED_HOSTS = []
